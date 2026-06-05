@@ -98,6 +98,8 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 - "Polling 是异常吗？"
 - "latest 日志路径和具体目录有什么区别？"
 - "这个按钮复制的是文件路径还是目录路径？"
+- "现在这是 Agentflow 托管的 it-runner 还是原版模式？"
+- "为什么 AI 把 runtime.json 或启动方式改成了 standalone it-runner 语义？"
 
 ### Strong trigger words
 - .it-runner
@@ -138,6 +140,12 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 - UI 语义
 - 文件路径
 - 目录路径
+- Agentflow 托管
+- runtime.json
+- host token
+- reregister
+- settings 页启动/重启
+- mode agentflow
 
 ---
 
@@ -240,6 +248,7 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 ### 业务仓库历史任务很多且很乱
 1. `project-deploy-standardization`
 2. `it-runner-workflow`
+3. `agentflow-hosted-mode.md` if the runner is hosted by Agentflow
 
 ### 正式环境接入失败
 1. `ops-fleet-project-onboarding`
@@ -247,7 +256,8 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 
 ### 任务存在但 UI/API 行为不对
 1. `it-runner-workflow`
-2. If repo boundaries are the root issue, then `deployment-model-design`
+2. `agentflow-hosted-mode.md` if the work is inside Agentflow or touches `runtime.json` / host lifecycle
+3. If repo boundaries are the root issue, then `deployment-model-design`
 
 ### 远端 Windows agent 控制链路有问题
 1. `it-runner-agentd-control`
@@ -260,3 +270,4 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 - For a concrete folder/file starting point, read `skills/TEMPLATES.md`
 - For cloning the `tlsproxy` pattern into another real service, read `skills/SECOND-SERVICE-CHECKLIST.md`
 - For daily `.it-runner` run/stop/log/envs-next commands, read `skills/IT-RUNNER-CHEATSHEET.md`
+- For Agentflow-hosted runner boundaries, read `skills/it-runner-workflow/references/agentflow-hosted-mode.md`

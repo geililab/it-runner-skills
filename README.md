@@ -9,7 +9,8 @@ inspect, and reuse without cloning a full ops repository.
 ## Contents
 
 - `skills/` - Codex skills for deployment modeling, project standardization,
-  ops-fleet onboarding, it-runner workflows, and Windows agent control.
+  ops-fleet onboarding, it-runner workflows, Agentflow-hosted it-runner usage,
+  and Windows agent control.
 - `scripts/` - helper scripts for installing and listing Codex skills.
 - `docs/` - bootstrap guidance and related planning/spec documents used by the
   scripts and skills.
@@ -72,6 +73,7 @@ Common entry points:
 - `skills/project-deploy-standardization/SKILL.md`
 - `skills/ops-fleet-project-onboarding/SKILL.md`
 - `skills/it-runner-workflow/SKILL.md`
+- `skills/it-runner-workflow/references/agentflow-hosted-mode.md`
 - `skills/it-runner-agentd-control/SKILL.md`
 - `skills/it-runner-convention-upgrade/SKILL.md`
 

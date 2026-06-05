@@ -7,6 +7,26 @@ description: Use when creating, debugging, or refactoring `.it-runner` projects 
 
 Use this skill for everything related to `.it-runner` structure, task authoring, API debugging, and `it-runner` runtime troubleshooting.
 
+## Agentflow Hosted Mode
+
+When this skill is used inside Agentflow, the default assumption is that `it-runner`
+is hosted by Agentflow through `it-runner-agentflow --mode agentflow`.
+
+Important boundaries:
+
+- Most tasks should focus on `.it-runner` project/task authoring, task discovery,
+  logs, APIs, and task behavior.
+- Do not casually change the host runtime model just because Agentflow is using
+  `it-runner`.
+- Do not infer that Agentflow-hosted `it-runner` should run through
+  `--runner-config it-runner.yaml`.
+- Do not rewrite `data/it-runner/runtime.json` using assumptions from the original
+  standalone runner mode.
+
+If the problem involves Agentflow settings-page lifecycle, host registration,
+`runtime.json`, host token, or re-register / hosted-runtime semantics, also read
+`references/agentflow-hosted-mode.md`.
+
 If the task is specifically about remote Windows program control through `agentd.exe`, `controlapi`, `agentctl`, or `agent-task.yaml`, use `../it-runner-agentd-control/SKILL.md` first, then return here for generic `.it-runner` issues.
 
 If the main task is specifically migrating a legacy project from old env naming to the new numbered env convention, prefer `it-runner-convention-upgrade` first, then come back here for runtime verification.
@@ -24,6 +44,8 @@ Create `.it-runner` setups that are discoverable, debuggable, and stable across 
 - task visibility and task discovery failures
 - API-based debugging of tasks
 - targeted `it-runner` core fixes when behavior is clearly in the runner itself
+- Agentflow-hosted mode boundaries for when task-level knowledge applies and when
+  host-runtime assumptions do not
 
 ## Required Directory Model
 
@@ -122,6 +144,7 @@ When patching `it-runner`, add a small regression test if practical.
 
 ## References
 
+- Read `references/agentflow-hosted-mode.md` when the work runs inside Agentflow and the problem may involve hosted-runtime assumptions, `runtime.json`, host token, or registration behavior.
 - Read `../it-runner-agentd-control/SKILL.md` when the work targets remote Windows program control through `agentd.exe` and `agentctl`.
 - Read `references/api-and-debugging.md` when troubleshooting via API.
 - Read `references/authoring-checklist.md` when creating or reviewing `.it-runner` tasks.

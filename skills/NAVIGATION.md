@@ -14,6 +14,7 @@
 
 .it-runner / API / 日志 / envs-next / .STATE 有问题
   -> it-runner-workflow
+  -> agentflow-hosted-mode.md (if the runner is hosted by Agentflow)
 
 agentd.exe / controlapi / agentctl / 远端 Windows 程序控制
   -> it-runner-agentd-control
@@ -66,6 +67,7 @@ deployment-model-design
 
 ```text
 it-runner-workflow
+  -> agentflow-hosted-mode.md (if running inside Agentflow)
   -> IT-RUNNER-CHEATSHEET.md
   -> project-deploy-standardization (if repo contract is still messy)
 ```
@@ -83,6 +85,7 @@ it-runner-agentd-control
 ```text
 it-runner-convention-upgrade
   -> it-runner-workflow
+  -> agentflow-hosted-mode.md (if migration validation happens inside Agentflow)
   -> IT-RUNNER-CHEATSHEET.md
 ```
 

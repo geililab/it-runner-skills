@@ -6,6 +6,7 @@
 - If you want a business repo to deploy to its own test server, start with `skills/project-deploy-standardization/SKILL.md`
 - If you want to wire a project into `ops-fleet`, start with `skills/ops-fleet-project-onboarding/SKILL.md`
 - If the problem is about `.it-runner` tasks, task visibility, logs, API, `envs-next`, or `.STATE` control, start with `skills/it-runner-workflow/SKILL.md`
+- If the work is happening inside Agentflow, also read `skills/it-runner-workflow/references/agentflow-hosted-mode.md` before changing runner lifecycle assumptions, `runtime.json`, or hosted registration behavior
 - If the problem is about understanding a task name, task title, copied log path, or task-detail UI semantics, still start with `skills/it-runner-workflow/SKILL.md` and then load its task/log/UI references
 - If the problem is about `agentd.exe`, `controlapi`, `agentctl`, remote Windows task application, or `agent-task.yaml`, start with `skills/it-runner-agentd-control/SKILL.md`
 - If the problem is specifically about `.it-runner` env layering and naming, also read `skills/it-runner-workflow/references/env-conventions.md`
@@ -24,10 +25,11 @@ This folder contains reusable skills for engineering deployment workflows across
 2. Use `project-deploy-standardization` when a business repo needs to own and stabilize its own deploy workflow.
 3. Use `ops-fleet-project-onboarding` when a standardized project should be wired into production orchestration.
 4. Use `it-runner-workflow` whenever `.it-runner` structure, task authoring, API debugging, or runner internals are part of the work.
-5. Use `it-runner-agentd-control` whenever the task crosses into remote Windows agent control, package publication, or `agentctl`-driven operations.
-6. Use `task-centric-patterns.md` to decide whether the repo should look like `tlsproxy`, `ddns-server`, `training`, or `ops-fleet`.
-7. Use `project-rollout-status.md` to see which repos are already template-ready and which ones still need task-centric phase 2.
-8. Use `it-runner-convention-upgrade` when an existing project must migrate from old env naming/layout to the strict numbered convention.
+5. If the runner is hosted by Agentflow, read `agentflow-hosted-mode.md` before touching startup assumptions, `runtime.json`, host registration, or settings-page lifecycle behavior.
+6. Use `it-runner-agentd-control` whenever the task crosses into remote Windows agent control, package publication, or `agentctl`-driven operations.
+7. Use `task-centric-patterns.md` to decide whether the repo should look like `tlsproxy`, `ddns-server`, `training`, or `ops-fleet`.
+8. Use `project-rollout-status.md` to see which repos are already template-ready and which ones still need task-centric phase 2.
+9. Use `it-runner-convention-upgrade` when an existing project must migrate from old env naming/layout to the strict numbered convention.
 
 ## Skill Selection
 
@@ -55,6 +57,7 @@ This folder contains reusable skills for engineering deployment workflows across
 ### `it-runner-workflow`
 - Path: `skills/it-runner-workflow/SKILL.md`
 - Use for: `.it-runner` authoring, task discovery, API debugging, and runner fixes
+- Companion: `skills/it-runner-workflow/references/agentflow-hosted-mode.md` when the runner is hosted by Agentflow
 - Typical prompts:
   - "Why is this task missing from the UI?"
   - "Create a `.it-runner` layout and tasks for this project"
@@ -90,6 +93,7 @@ This folder contains reusable skills for engineering deployment workflows across
 
 ### Existing Project With Broken Tasks
 - `it-runner-workflow`
+- `agentflow-hosted-mode.md` if the work happens inside Agentflow or touches hosted runtime assumptions
 - `project-deploy-standardization` if the repo still lacks a stable deploy contract
 
 ### Remote Windows Agent Control
@@ -118,6 +122,7 @@ This folder contains reusable skills for engineering deployment workflows across
 - Second service onboarding checklist: `skills/SECOND-SERVICE-CHECKLIST.md`
 - It-runner cheatsheet: `skills/IT-RUNNER-CHEATSHEET.md`
 - It-runner task model patterns: `skills/it-runner-workflow/references/task-centric-patterns.md`
+- It-runner Agentflow hosted mode: `skills/it-runner-workflow/references/agentflow-hosted-mode.md`
 - It-runner task reading and naming: `skills/it-runner-workflow/references/task-reading-and-naming.md`
 - It-runner log reading and paths: `skills/it-runner-workflow/references/log-reading-and-paths.md`
 - It-runner UI semantics: `skills/it-runner-workflow/references/ui-semantics.md`
