@@ -5,6 +5,7 @@
 - If you are not sure how to model deployment yet, start with `skills/deployment-model-design/SKILL.md`
 - If you want a business repo to deploy to its own test server, start with `skills/project-deploy-standardization/SKILL.md`
 - If you want to wire a project into `ops-fleet`, start with `skills/ops-fleet-project-onboarding/SKILL.md`
+- If the user is asking what `it-runner` is, why it exists, or when it should be used, start with `skills/what-is-it-runner/SKILL.md`
 - If the problem is about `.it-runner` tasks, task visibility, logs, API, `envs-next`, or `.STATE` control, start with `skills/it-runner-workflow/SKILL.md`
 - If the work is happening inside Agentflow, also read `skills/it-runner-workflow/references/agentflow-hosted-mode.md` before changing runner lifecycle assumptions, `runtime.json`, or hosted registration behavior
 - If the problem is about understanding a task name, task title, copied log path, or task-detail UI semantics, still start with `skills/it-runner-workflow/SKILL.md` and then load its task/log/UI references
@@ -66,6 +67,16 @@ This folder contains reusable skills for engineering deployment workflows across
   - "为什么这里显示可启动但又是已停止？"
   - "latest 路径和具体日志目录有什么区别？"
 
+### `what-is-it-runner`
+- Path: `skills/what-is-it-runner/SKILL.md`
+- Use for: explaining what `it-runner` is, why it exists, how it fits with Agentflow or AI agents, and when a workflow should become a durable task
+- Typical prompts:
+  - "什么是 it-runner？"
+  - "为什么要用 it-runner？"
+  - "只用 AI agent 不够吗？"
+  - "it-runner 和 Agentflow 是什么关系？"
+  - "什么时候应该把一个流程做成 it-runner 任务？"
+
 ### `it-runner-agentd-control`
 - Path: `skills/it-runner-agentd-control/SKILL.md`
 - Use for: `agentd.exe`, `controlapi`, `agentctl`, `agent-task.yaml`, remote Windows task apply/restart/status/logs, and reusable winagent task templates
@@ -96,6 +107,10 @@ This folder contains reusable skills for engineering deployment workflows across
 - `agentflow-hosted-mode.md` if the work happens inside Agentflow or touches hosted runtime assumptions
 - `project-deploy-standardization` if the repo still lacks a stable deploy contract
 
+### User Is Still Learning The Concept
+- `what-is-it-runner`
+- `it-runner-workflow` only after the user moves from concept to authoring/debugging
+
 ### Remote Windows Agent Control
 - `it-runner-agentd-control`
 - `it-runner-workflow` if the local `.it-runner` task structure or env layout is also broken
@@ -122,6 +137,7 @@ This folder contains reusable skills for engineering deployment workflows across
 - Second service onboarding checklist: `skills/SECOND-SERVICE-CHECKLIST.md`
 - It-runner cheatsheet: `skills/IT-RUNNER-CHEATSHEET.md`
 - It-runner task model patterns: `skills/it-runner-workflow/references/task-centric-patterns.md`
+- What it-runner is: `skills/what-is-it-runner/SKILL.md`
 - It-runner Agentflow hosted mode: `skills/it-runner-workflow/references/agentflow-hosted-mode.md`
 - It-runner task reading and naming: `skills/it-runner-workflow/references/task-reading-and-naming.md`
 - It-runner log reading and paths: `skills/it-runner-workflow/references/log-reading-and-paths.md`

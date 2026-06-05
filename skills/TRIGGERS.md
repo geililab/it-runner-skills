@@ -2,6 +2,37 @@
 
 This file helps quickly choose the right deployment-related skill in `skills/`.
 
+## `what-is-it-runner`
+
+### Use this skill when you say
+- "什么是 it-runner？"
+- "为什么要用 it-runner？"
+- "it-runner 有什么作用？"
+- "只用 AI agent 不够吗？"
+- "it-runner 和 Agentflow 是什么关系？"
+- "什么时候应该把一个流程做成 it-runner 任务？"
+- "什么时候不该用 it-runner？"
+
+### Strong trigger words
+- 什么是 it-runner
+- 为什么要用 it-runner
+- it-runner 有什么作用
+- Agentflow 和 it-runner 的关系
+- AI agent 和 it-runner 的区别
+- durable task
+- 重复操作
+- 任务沉淀
+- 日志和状态
+- 什么时候适合做成任务
+
+### Typical outcome
+- 解释 `it-runner` 的定位
+- 解释它和 AI / Agentflow 的分工
+- 说明什么时候适合或不适合引入 `it-runner`
+- 把用户路由到后续更具体的 skill
+
+---
+
 ## `deployment-model-design`
 
 ### Use this skill when you say
@@ -228,6 +259,9 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 
 ### 我要把业务接入正式环境
 - Start with `ops-fleet-project-onboarding`
+
+### 用户还在问 it-runner 到底是什么
+- Start with `what-is-it-runner`
 
 ### 我的 `.it-runner` 任务坏了或没显示
 - Start with `it-runner-workflow`

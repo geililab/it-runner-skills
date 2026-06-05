@@ -73,6 +73,7 @@ Common entry points:
 - `skills/project-deploy-standardization/SKILL.md`
 - `skills/ops-fleet-project-onboarding/SKILL.md`
 - `skills/it-runner-workflow/SKILL.md`
+- `skills/what-is-it-runner/SKILL.md`
 - `skills/it-runner-workflow/references/agentflow-hosted-mode.md`
 - `skills/it-runner-agentd-control/SKILL.md`
 - `skills/it-runner-convention-upgrade/SKILL.md`

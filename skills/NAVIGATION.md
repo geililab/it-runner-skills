@@ -12,6 +12,9 @@
 要接入 ops-fleet 正式环境
   -> ops-fleet-project-onboarding
 
+用户先问什么是 it-runner / 为什么要用它
+  -> what-is-it-runner
+
 .it-runner / API / 日志 / envs-next / .STATE 有问题
   -> it-runner-workflow
   -> agentflow-hosted-mode.md (if the runner is hosted by Agentflow)
@@ -70,6 +73,13 @@ it-runner-workflow
   -> agentflow-hosted-mode.md (if running inside Agentflow)
   -> IT-RUNNER-CHEATSHEET.md
   -> project-deploy-standardization (if repo contract is still messy)
+```
+
+### User Education
+
+```text
+what-is-it-runner
+  -> it-runner-workflow (after the user moves from concept to authoring/debugging)
 ```
 
 ### Remote Windows Control
