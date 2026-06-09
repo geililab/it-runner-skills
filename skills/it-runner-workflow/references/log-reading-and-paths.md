@@ -98,6 +98,44 @@ When a user shares a task screenshot or task name and asks “看日志”:
 4. mention the current concrete run directory if the UI shows it
 5. only then dive into stdout/stderr if the runner log is not enough
 
+## AI Fix Verification Pattern
+
+When an AI agent fixes a failing task, the verification must use the next run's
+logs, not the old failure logs.
+
+Recommended loop:
+
+1. Before editing, read the current state and logs:
+   - task API state, including `status`, `running`, `lastError`, `logDir`,
+     `runId`, and `processes`
+   - `latest/state.json` when reading files directly
+   - `latest/it-runner.log`
+   - `latest/*.stderr.log`
+   - `latest/*.stdout.log`
+2. Explain the likely root cause from the evidence.
+3. Make the smallest relevant code, task, or env/config fix.
+4. Trigger a new run:
+   - use `POST /it-runner/api/tasks/{taskKey}/restart`, or
+   - write `RESTART <fresh-token>` to the task's `watch.stateFile`
+5. Re-read task state and the files under `latest/`.
+6. Report whether the new run proves success or still fails.
+
+Success evidence depends on the task type:
+
+- one-shot build/test task: `status=done` or the target command passed
+- service task: service process is running and readiness/probe checks passed
+- probe/smoke task: the expected check passed in `it-runner.log` or stdout
+
+Important boundaries:
+
+- `latest/state.json` is a read-only state snapshot. Do not edit it to control a
+  task.
+- The control entry is `watch.stateFile` or the HTTP task API.
+- Use a fresh restart token every time; repeated `RESTART same-token` may be
+  ignored as already applied.
+- After three failed repair attempts, stop changing files and summarize the
+  remaining evidence, attempted fixes, and the next decision needed.
+
 ## Common Mistakes
 
 - reading only stdout and missing runner-side failures

@@ -123,6 +123,41 @@ When a task is missing or failing, use this sequence:
 5. Inspect task status and logs.
 6. Only after that decide whether the bug is in task config, env files, or `it-runner` itself.
 
+## Agent Fix / Restart / Verify Loop
+
+When an AI agent is asked to fix a failing it-runner task, do not stop after
+editing code or config. Use the runner as the verification harness:
+
+1. Read the current task state and logs.
+   - Start with the task API state, especially `status`, `running`,
+     `lastError`, `logDir`, `runId`, and process metadata.
+   - Read `it-runner.log` for runner-side failures such as env expansion,
+     cleanup, start commands, port readiness, HTTP probes, and restart history.
+   - Read task stdout/stderr for application, build, test, or dependency errors.
+2. Identify the most likely root cause.
+   - Distinguish task config/env problems from application code failures and
+     runner bugs.
+   - Do not rewrite unrelated task structure while investigating one failure.
+3. Make the smallest relevant fix.
+   - Patch application code, task YAML, project config, or env defaults according
+     to the evidence.
+   - Preserve local secrets and machine-local overrides.
+4. Restart the task.
+   - Prefer `POST /it-runner/api/tasks/{taskKey}/restart` when task keys and the
+     API are available.
+   - If the task defines `watch.stateFile`, writing
+     `RESTART <fresh-token>` to that file is also valid.
+5. Re-read the latest run.
+   - Do not rely on logs from the previous run.
+   - Re-fetch task state and logs after restart.
+   - Prefer the stable `latest/` path when reading files directly.
+6. Decide from evidence whether the fix worked.
+   - Success can mean `status=done`, a service is running and probes passed, or
+     the target build/test command passed.
+   - If it still fails, repeat the loop with the new logs. Keep the loop bounded;
+     after about three failed repair attempts, stop and report the remaining
+     evidence and the decision point.
+
 ## Common Failure Modes
 
 - `task.version missing`
