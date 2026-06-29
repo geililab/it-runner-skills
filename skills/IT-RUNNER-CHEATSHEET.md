@@ -50,7 +50,15 @@ curl -X POST http://127.0.0.1:19090/it-runner/api/workspaces/<workspaceKey>/proj
 
 ## 3. Control Through `.STATE`
 
-When a task defines `watch.stateFile`, you can control it via the state file.
+Tasks are file-controllable only when their `task.yaml` defines
+`watch.stateFile`. New task templates should include it by default, for example:
+
+```yaml
+watch:
+  stateFile: ${PROJECT_ROOT}/.it-runner/states/<task-name>.STATE
+```
+
+Control the task by writing to that configured state file.
 
 ### Restart
 
@@ -68,6 +76,10 @@ echo "STOP $(date +%s)" > <STATE_FILE>
 
 - Always use a fresh token such as `$(date +%s)`.
 - Prefer `RESTART` / `STOP` over arbitrary echoed text.
+- If `watch.stateFile` is absent, add it to `task.yaml` or use the HTTP API;
+  writing a random `STATE` file will not control the task.
+- Do not write to `latest/state.json`; it is a status snapshot, not a control
+  file.
 - Use API control when you need explicit remote automation by task key.
 
 ## 4. Inspect Environment Resolution

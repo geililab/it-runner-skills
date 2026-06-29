@@ -25,7 +25,10 @@
 - `name` and `description` are operator-friendly
 - tags are present where useful
 - command is non-interactive unless explicitly intended
-- `watch.stateFile` is present when the task should support file-based stop/restart control
+- `watch.stateFile` is present by default for new tasks so agents can restart or
+  stop through `STATE`; omit it only when the task is deliberately not
+  file-controllable
+- deprecated `watch.stopFile` / `watch.restartFiles` are not used for new tasks
 
 ## Operational Usability
 
@@ -33,6 +36,8 @@
 - task names are short enough for UI scanning
 - selected-target workflows use one selector variable instead of N near-duplicate tasks
 - if `watch.stateFile` is used, document the exact `RESTART <token>` / `STOP <token>` pattern
+- when documenting restart, point to the configured `watch.stateFile`, not to
+  `latest/state.json` or another read-only status file
 
 ## Validation
 
