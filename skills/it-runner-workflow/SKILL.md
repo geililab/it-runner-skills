@@ -78,7 +78,11 @@ Important rule: tasks should normally be discovered as **task directories contai
 - Prefer a small, intentional task surface.
 - Use clear names that reflect operator intent.
 - For families of tasks, prefer selected-target tasks over excessive duplication.
-- Prefer `watch.stateFile` as the file-based control entry for stop/restart behavior.
+- For newly authored tasks, include `watch.stateFile` by default so agents and
+  operators can restart/stop the task through `STATE`; omit it only for a
+  deliberate one-shot task that must not support file-based control.
+- Prefer `watch.stateFile` over deprecated `watch.stopFile` /
+  `watch.restartFiles`.
 - Prefer task-local env plans over pushing task-specific parameters into project-wide `010-local.env`.
 
 ## Task-Centric Design Rule
@@ -95,6 +99,16 @@ Do not assume one universal pattern. Choose the smallest viable task-centric pat
 
 ## State File Control
 
+`watch.stateFile` is opt-in at the task YAML level. If the field is missing,
+writing `STATE` commands cannot restart or stop that task. When creating or
+reviewing a task that is expected to be repairable by an AI agent, add an
+explicit state file path such as:
+
+```yaml
+watch:
+  stateFile: ${PROJECT_ROOT}/.it-runner/states/<task-name>.STATE
+```
+
 When a task defines `watch.stateFile`, there are two supported ways to trigger it:
 
 1. Use the HTTP API
@@ -109,6 +123,8 @@ Important notes:
 
 - Include a changing token such as a timestamp so each command is treated as new.
 - The recommended control words are `RESTART` and `STOP`.
+- Existing commands are primed at runner startup, so write a fresh command after
+  the runner is already watching the task.
 - Do not assume arbitrary text has meaningful semantics; prefer the runner's documented control format.
 - A plain write that changes the file may still trigger behavior in some setups, but standardize on `RESTART <token>` / `STOP <token>`.
 

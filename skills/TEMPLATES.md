@@ -135,6 +135,10 @@ envFiles:
 
 ### Minimal `task.yaml`
 
+New tasks should include `watch.stateFile` by default so AI agents and
+operators can trigger restart/stop through `STATE`. Omit it only for a
+deliberate one-shot task that must not expose file-based control.
+
 ```yaml
 version: "1"
 name: ops-show-selected
@@ -150,12 +154,14 @@ workdir: ${PROJECT_ROOT}
 
 ### Recommended `stateFile` control
 
-If a task defines `watch.stateFile`, prefer these control commands:
+If a task defines `watch.stateFile`, use these control commands:
 
 - restart: `echo "RESTART $(date +%s)" > <STATE_FILE>`
 - stop: `echo "STOP $(date +%s)" > <STATE_FILE>`
 
-Use a fresh timestamp or token each time.
+Use a fresh timestamp or token each time. Do not write restart commands to
+`latest/state.json`; that file is a read-only run snapshot, not the control
+entry.
 
 ### Task authoring checklist
 
@@ -163,7 +169,8 @@ Use a fresh timestamp or token each time.
 - `version: "1"` is present
 - name is operator-friendly
 - workdir points at `${PROJECT_ROOT}` when appropriate
-- `watch.stateFile` is present when the task should support file-based stop/restart
+- `watch.stateFile` is present by default unless file-based control is
+  deliberately disabled
 - task is visible in API before deeper debugging
 
 ## 4. Standard Workflow Template
