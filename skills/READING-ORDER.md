@@ -47,7 +47,6 @@ Use this file when you want the shortest human-readable sequence for navigating 
 
 Choose one of these based on the problem you are solving:
 
-- `skills/deployment-model-design/SKILL.md`
 - `skills/project-deploy-standardization/SKILL.md`
 - `skills/ops-fleet-project-onboarding/SKILL.md`
 - `skills/what-is-it-runner/SKILL.md`
@@ -55,7 +54,6 @@ Choose one of these based on the problem you are solving:
 
 ## Shortest Decision Rule
 
-- Need architecture/modeling help → `deployment-model-design`
 - Need the business repo to own and run deployments → `project-deploy-standardization`
 - Need `ops-fleet` production onboarding → `ops-fleet-project-onboarding`
 - Need to explain what `it-runner` is or why it exists → `what-is-it-runner`

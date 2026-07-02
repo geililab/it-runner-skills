@@ -3,9 +3,6 @@
 ## Fast Path
 
 ```text
-不确定怎么设计
-  -> deployment-model-design
-
 业务仓库先能自己部署测试机
   -> project-deploy-standardization
 
@@ -60,8 +57,7 @@ INDEX.md
 ### New Business
 
 ```text
-deployment-model-design
-  -> project-deploy-standardization
+project-deploy-standardization
   -> ops-fleet-project-onboarding
   -> it-runner-workflow (as needed)
 ```

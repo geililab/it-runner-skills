@@ -1,52 +1,13 @@
 # New Service Deployment Runbook
 
-This runbook turns the deployment skills in `skills/` into a practical operating sequence for future services.
+This runbook turns the it-runner-related skills in `skills/` into a practical
+operating sequence for future services.
 
-It is organized into three phases:
-- **Day 1**: design the deployment model
-- **Day 2**: make the business repo independently deployable to test servers
+It is organized into two phases:
+- **Day 1**: make the business repo independently deployable to test servers
 - **Production**: onboard the project into `ops-fleet` and operate formal rollout
 
-## Phase 1: Day 1 Design
-
-### Goal
-
-Define the deployment model before writing tasks or scripts.
-
-### Use these skills
-
-- `deployment-model-design`
-- `it-runner-workflow` if `.it-runner` structure is already involved
-
-### Decisions to make
-
-1. What is a **server** in this project?
-2. What is a **deployment instance** for this project?
-3. What must remain in **local overrides** only?
-4. What is the **artifact boundary**?
-5. What rollout shape is required later: canary, promote, rollback, verify?
-6. Which repo owns deployment logic? Usually: the business repo.
-7. Which repo owns production resources? Usually: `ops-fleet`.
-8. Can the same physical host appear in both business-repo test metadata and `ops-fleet` production metadata? If yes, keep the data independent but keep the model consistent.
-
-### Expected output
-
-- a clear model for:
-  - `server`
-  - `deployment`
-  - `local overrides`
-  - `release`
-  - `rollout`
-- a repo responsibility split
-- a folder layout direction
-
-### Exit criteria
-
-- no mixed “server + deployment” files remain in the design
-- business repo and `ops-fleet` responsibilities are explicit
-- action contract is decided: `release/init/preflight/deploy/rollback/verify`
-
-## Phase 2: Day 2 Business Repo Standardization
+## Phase 1: Day 1 Business Repo Standardization
 
 ### Goal
 
@@ -113,7 +74,7 @@ Make the business repo independently deployable to test servers.
 - one selected-target flow is working end to end on a test machine
 - the project is ready for `ops-fleet` onboarding
 
-## Phase 3: Production Onboarding And Rollout
+## Phase 2: Production Onboarding And Rollout
 
 ### Goal
 
@@ -199,7 +160,7 @@ Use `it-runner-workflow` whenever any of these appear:
 1. Read `skills/INDEX.md`
 2. Use `skills/TRIGGERS.md` to choose the first skill
 3. Use `skills/TEMPLATES.md` to create the first folder layout
-4. Follow this runbook to move from design → test deploy → production onboarding
+4. Follow this runbook to move from test deploy → production onboarding
 
 ## Related Files
 
@@ -207,7 +168,6 @@ Use `it-runner-workflow` whenever any of these appear:
 - `skills/TRIGGERS.md`
 - `skills/TEMPLATES.md`
 - `skills/SECOND-SERVICE-CHECKLIST.md`
-- `skills/deployment-model-design/SKILL.md`
 - `skills/project-deploy-standardization/SKILL.md`
 - `skills/ops-fleet-project-onboarding/SKILL.md`
 - `skills/it-runner-workflow/SKILL.md`

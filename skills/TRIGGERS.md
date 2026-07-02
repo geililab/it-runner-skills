@@ -1,6 +1,6 @@
 # Skill Trigger Cheat Sheet
 
-This file helps quickly choose the right deployment-related skill in `skills/`.
+This file helps quickly choose the right it-runner-related skill in `skills/`.
 
 ## `what-is-it-runner`
 
@@ -30,32 +30,6 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 - 解释它和 AI / Agentflow 的分工
 - 说明什么时候适合或不适合引入 `it-runner`
 - 把用户路由到后续更具体的 skill
-
----
-
-## `deployment-model-design`
-
-### Use this skill when you say
-- "帮我设计部署模型"
-- "如何拆 server 和 deployment？"
-- "测试环境和正式环境应该怎么分层？"
-- "一个项目部署到多台服务器应该怎么设计？"
-- "ops-fleet 和业务仓库应该怎么分工？"
-- "如何设计 release / rollout / rollback 结构？"
-
-### Strong trigger words
-- 设计部署模型
-- 建模
-- server / deployment / local overrides
-- release / rollout
-- 分层
-- 职责边界
-- 正式环境 / 测试环境
-
-### Typical outcome
-- 产出统一概念模型
-- 明确 repo 边界
-- 明确目录结构和任务面
 
 ---
 
@@ -251,9 +225,6 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 
 ## Quick Selection Patterns
 
-### 我还没想清楚结构
-- Start with `deployment-model-design`
-
 ### 我要让业务仓库自己可部署
 - Start with `project-deploy-standardization`
 
@@ -274,10 +245,9 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 ## Common Sequences
 
 ### 新业务从零开始
-1. `deployment-model-design`
-2. `project-deploy-standardization`
-3. `ops-fleet-project-onboarding`
-4. `it-runner-workflow` as needed
+1. `project-deploy-standardization`
+2. `ops-fleet-project-onboarding`
+3. `it-runner-workflow` as needed
 
 ### 业务仓库历史任务很多且很乱
 1. `project-deploy-standardization`
@@ -291,7 +261,6 @@ This file helps quickly choose the right deployment-related skill in `skills/`.
 ### 任务存在但 UI/API 行为不对
 1. `it-runner-workflow`
 2. `agentflow-hosted-mode.md` if the work is inside Agentflow or touches `runtime.json` / host lifecycle
-3. If repo boundaries are the root issue, then `deployment-model-design`
 
 ### 远端 Windows agent 控制链路有问题
 1. `it-runner-agentd-control`

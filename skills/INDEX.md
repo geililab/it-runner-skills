@@ -2,7 +2,6 @@
 
 ## 30-Second Start
 
-- If you are not sure how to model deployment yet, start with `skills/deployment-model-design/SKILL.md`
 - If you want a business repo to deploy to its own test server, start with `skills/project-deploy-standardization/SKILL.md`
 - If you want to wire a project into `ops-fleet`, start with `skills/ops-fleet-project-onboarding/SKILL.md`
 - If the user is asking what `it-runner` is, why it exists, or when it should be used, start with `skills/what-is-it-runner/SKILL.md`
@@ -18,28 +17,21 @@
 - If you want a folder/file starting point, read `skills/TEMPLATES.md`
 - If this is the next real service after `tlsproxy`, read `skills/SECOND-SERVICE-CHECKLIST.md`
 
-This folder contains reusable skills for engineering deployment workflows across business repositories, `ops-fleet`, and `it-runner`.
+This folder contains reusable skills for engineering `it-runner` workflows across
+business repositories, `ops-fleet`, Agentflow, and remote agent control.
 
 ## Recommended Order
 
-1. Use `deployment-model-design` when the deployment structure or repo boundaries are still unclear.
-2. Use `project-deploy-standardization` when a business repo needs to own and stabilize its own deploy workflow.
-3. Use `ops-fleet-project-onboarding` when a standardized project should be wired into production orchestration.
-4. Use `it-runner-workflow` whenever `.it-runner` structure, task authoring, API debugging, or runner internals are part of the work.
-5. If the runner is hosted by Agentflow, read `agentflow-hosted-mode.md` before touching startup assumptions, `runtime.json`, host registration, or settings-page lifecycle behavior.
-6. Use `it-runner-agentd-control` whenever the task crosses into remote Windows agent control, package publication, or `agentctl`-driven operations.
-7. Use `task-centric-patterns.md` to decide whether the repo should look like `tlsproxy`, `ddns-server`, `training`, or `ops-fleet`.
-8. Use `project-rollout-status.md` to see which repos are already template-ready and which ones still need task-centric phase 2.
-9. Use `it-runner-convention-upgrade` when an existing project must migrate from old env naming/layout to the strict numbered convention.
+1. Use `it-runner-workflow` whenever `.it-runner` structure, task authoring, API debugging, or runner internals are part of the work.
+2. If the runner is hosted by Agentflow, read `agentflow-hosted-mode.md` before touching startup assumptions, `runtime.json`, host registration, or settings-page lifecycle behavior.
+3. Use `project-deploy-standardization` when a business repo needs to own and stabilize its own deploy workflow.
+4. Use `ops-fleet-project-onboarding` when a standardized project should be wired into production orchestration.
+5. Use `it-runner-agentd-control` whenever the task crosses into remote Windows agent control, package publication, or `agentctl`-driven operations.
+6. Use `task-centric-patterns.md` to decide whether the repo should look like `tlsproxy`, `ddns-server`, `training`, or `ops-fleet`.
+7. Use `project-rollout-status.md` to see which repos are already template-ready and which ones still need task-centric phase 2.
+8. Use `it-runner-convention-upgrade` when an existing project must migrate from old env naming/layout to the strict numbered convention.
 
 ## Skill Selection
-
-### `deployment-model-design`
-- Path: `skills/deployment-model-design/SKILL.md`
-- Use for: modeling `server`, `deployment`, `local overrides`, `release`, and `rollout`
-- Typical prompts:
-  - "How should we model one service across many servers?"
-  - "How do we split business repo deployment logic from ops-fleet orchestration?"
 
 ### `project-deploy-standardization`
 - Path: `skills/project-deploy-standardization/SKILL.md`
@@ -97,7 +89,6 @@ This folder contains reusable skills for engineering deployment workflows across
 ## Sequencing Patterns
 
 ### New Service From Scratch
-- `deployment-model-design`
 - `project-deploy-standardization`
 - `ops-fleet-project-onboarding`
 - `it-runner-workflow` as needed during authoring/debugging
@@ -119,8 +110,7 @@ This folder contains reusable skills for engineering deployment workflows across
 - `it-runner-convention-upgrade`
 - `it-runner-workflow` if task behavior must be revalidated after migration
 
-### Formal Production Rollout Design
-- `deployment-model-design`
+### Formal Production Rollout
 - `ops-fleet-project-onboarding`
 
 ## Notes
