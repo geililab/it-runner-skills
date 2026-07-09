@@ -32,30 +32,24 @@ Use this file when you want the shortest human-readable sequence for navigating 
    - Read this if you need to choose the right task-centered `.it-runner` pattern for a repo.
 
 10. `skills/it-runner-workflow/references/project-rollout-status.md`
-   - Read this if you need to know which repos are already migrated, which repo is the best template, or which repo still needs task-centric phase 2.
+   - Read this only when you need historical context on known migrated repos or reference templates.
 
 11. `skills/it-runner-convention-upgrade/SKILL.md`
    - Read this if your work is specifically about migrating an existing project from legacy `.it-runner` env naming to the new numbered convention.
-
-12. `skills/NEW-SERVICE-RUNBOOK.md`
-   - Read this if you want the full design → test deploy → production onboarding flow.
-
-13. `skills/SECOND-SERVICE-CHECKLIST.md`
-   - Read this when cloning the proven `tlsproxy` pattern into another real service.
 
 ## Then Read The Actual Skill
 
 Choose one of these based on the problem you are solving:
 
-- `skills/project-deploy-standardization/SKILL.md`
-- `skills/ops-fleet-project-onboarding/SKILL.md`
 - `skills/what-is-it-runner/SKILL.md`
 - `skills/it-runner-workflow/SKILL.md`
+- `skills/it-runner-agentd-control/SKILL.md`
+- `skills/it-runner-convention-upgrade/SKILL.md`
 
 ## Shortest Decision Rule
 
-- Need the business repo to own and run deployments → `project-deploy-standardization`
-- Need `ops-fleet` production onboarding → `ops-fleet-project-onboarding`
-- Need to explain what `it-runner` is or why it exists → `what-is-it-runner`
-- Need `.it-runner` creation/debugging/API/log help → `it-runner-workflow`
-- If that `.it-runner` work is happening inside Agentflow → also read `references/agentflow-hosted-mode.md`
+- Need to explain what `it-runner` is or why it exists -> `what-is-it-runner`
+- Need `.it-runner` creation/debugging/API/log help -> `it-runner-workflow`
+- Need Agentflow-hosted runner lifecycle boundaries -> `agentflow-hosted-mode.md`
+- Need remote Windows agent control -> `it-runner-agentd-control`
+- Need legacy `.it-runner` env migration -> `it-runner-convention-upgrade`

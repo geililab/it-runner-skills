@@ -3,14 +3,13 @@
 `it-runner-skills` contains reusable Codex skills, bootstrap scripts, and
 supporting documentation for IT runner workflows.
 
-The repository is intended to make ops workflow materials easier to install,
-inspect, and reuse without cloning a full ops repository.
+The repository is intended to make it-runner workflow materials easier to
+install, inspect, and reuse without cloning a full ops repository.
 
 ## Contents
 
-- `skills/` - Codex skills for project standardization, ops-fleet onboarding,
-  it-runner workflows, Agentflow-hosted it-runner usage, and Windows agent
-  control.
+- `skills/` - Codex skills for it-runner workflows, Agentflow-hosted
+  it-runner usage, env convention upgrades, and Windows agent control.
 - `scripts/` - helper scripts for installing and listing Codex skills.
 - `docs/` - bootstrap guidance and related planning/spec documents used by the
   scripts and skills.
@@ -69,8 +68,6 @@ Start with `skills/INDEX.md` for skill selection and reading order.
 
 Common entry points:
 
-- `skills/project-deploy-standardization/SKILL.md`
-- `skills/ops-fleet-project-onboarding/SKILL.md`
 - `skills/it-runner-workflow/SKILL.md`
 - `skills/what-is-it-runner/SKILL.md`
 - `skills/it-runner-workflow/references/agentflow-hosted-mode.md`

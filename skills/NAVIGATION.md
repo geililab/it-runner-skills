@@ -3,12 +3,6 @@
 ## Fast Path
 
 ```text
-业务仓库先能自己部署测试机
-  -> project-deploy-standardization
-
-要接入 ops-fleet 正式环境
-  -> ops-fleet-project-onboarding
-
 用户先问什么是 it-runner / 为什么要用它
   -> what-is-it-runner
 
@@ -34,12 +28,6 @@ agentd.exe / controlapi / agentctl / 远端 Windows 程序控制
 
 只想照目录模板搭起来
   -> TEMPLATES.md
-
-想按阶段推进一个新业务
-  -> NEW-SERVICE-RUNBOOK.md
-
-想复制 tlsproxy 模式到第二个业务
-  -> SECOND-SERVICE-CHECKLIST.md
 ```
 
 ## Recommended Reading Order
@@ -48,18 +36,16 @@ agentd.exe / controlapi / agentctl / 远端 Windows 程序控制
 INDEX.md
   -> TRIGGERS.md
   -> TEMPLATES.md
-  -> NEW-SERVICE-RUNBOOK.md
   -> 具体 SKILL.md
 ```
 
 ## Suggested Paths
 
-### New Business
+### User Education
 
 ```text
-project-deploy-standardization
-  -> ops-fleet-project-onboarding
-  -> it-runner-workflow (as needed)
+what-is-it-runner
+  -> it-runner-workflow (after the user moves from concept to authoring/debugging)
 ```
 
 ### Broken Tasks
@@ -68,14 +54,6 @@ project-deploy-standardization
 it-runner-workflow
   -> agentflow-hosted-mode.md (if running inside Agentflow)
   -> IT-RUNNER-CHEATSHEET.md
-  -> project-deploy-standardization (if repo contract is still messy)
-```
-
-### User Education
-
-```text
-what-is-it-runner
-  -> it-runner-workflow (after the user moves from concept to authoring/debugging)
 ```
 
 ### Remote Windows Control
@@ -92,13 +70,5 @@ it-runner-agentd-control
 it-runner-convention-upgrade
   -> it-runner-workflow
   -> agentflow-hosted-mode.md (if migration validation happens inside Agentflow)
-  -> IT-RUNNER-CHEATSHEET.md
-```
-
-### Production Rollout
-
-```text
-ops-fleet-project-onboarding
-  -> NEW-SERVICE-RUNBOOK.md
   -> IT-RUNNER-CHEATSHEET.md
 ```
