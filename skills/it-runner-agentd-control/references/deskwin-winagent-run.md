@@ -4,10 +4,10 @@
 
 Current example project:
 
-- `.it-runner` root: `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner`
-- task definition: `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/tasks/deskwin_winagent/task.yaml`
-- remote task payload: `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/tasks/deskwin_winagent/agent-task.yaml`
-- helper library: `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/scripts/lib_deskwin_winagent.sh`
+- `.it-runner` root: `/path/to/example-app/.it-runner`
+- task definition: `/path/to/example-app/.it-runner/projects/example/tasks/deskwin_winagent/task.yaml`
+- remote task payload: `/path/to/example-app/.it-runner/projects/example/tasks/deskwin_winagent/agent-task.yaml`
+- helper library: `/path/to/example-app/.it-runner/projects/example/scripts/lib_deskwin_winagent.sh`
 
 Use that example as the current golden path until a better generalized template appears.
 
@@ -33,7 +33,7 @@ Observed wrapper flow inside the helper scripts:
 
 Key file:
 
-- `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/tasks/deskwin_winagent/task.yaml:1`
+- `/path/to/example-app/.it-runner/projects/example/tasks/deskwin_winagent/task.yaml:1`
 
 ## Remote Payload Shape
 
@@ -46,7 +46,7 @@ The remote payload expresses the Windows-side runtime contract:
 
 Key file:
 
-- `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/tasks/deskwin_winagent/agent-task.yaml:1`
+- `/path/to/example-app/.it-runner/projects/example/tasks/deskwin_winagent/agent-task.yaml:1`
 
 ## Shared Env Names In The Example
 
@@ -66,11 +66,11 @@ The current sample relies on these envs:
 
 Task defaults live at:
 
-- `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/tasks/deskwin_winagent/envs/000-defaults.env:1`
+- `/path/to/example-app/.it-runner/projects/example/tasks/deskwin_winagent/envs/000-defaults.env:1`
 
 Target selection currently uses:
 
-- `/projects/workspace-ubuntu/example-org/sdkapptunnel/.it-runner/projects/apptunnel/envsets/winagent-targets/local-dev/000-base.env:1`
+- `/path/to/example-app/.it-runner/projects/example/envsets/winagent-targets/local-dev/000-base.env:1`
 
 ## Why This Example Matters
 
