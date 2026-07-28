@@ -24,7 +24,13 @@
 - `version: "1"` present
 - `name` and `description` are operator-friendly
 - tags are present where useful
-- command is non-interactive unless explicitly intended
+- long-running services such as dev servers, daemons, watchers, and app servers
+  use `processes[].cmd`
+- top-level `command` is used only for supported one-shot checks, builds, and
+  scripts that are expected to exit
+- commands are non-interactive unless explicitly intended
+- service commands include `cd "${PROJECT_ROOT}/..." && exec ...` when the
+  runner version's task-level workdir behavior has not been proven
 - `watch.stateFile` is present by default for new tasks so agents can restart or
   stop through `STATE`; omit it only when the task is deliberately not
   file-controllable
@@ -46,4 +52,7 @@
 - higher-numbered env files override lower-numbered ones as intended
 - selector env files only appear when the selector variable matches
 - task runs successfully
+- service task logs do not contain `done (no processes)`
+- service task shows `running: true`, passes a readiness probe, or exposes the
+  expected listening port/process
 - task logs are understandable

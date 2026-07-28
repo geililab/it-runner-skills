@@ -32,23 +32,49 @@ envFiles:
   - /outside/of/repo/secret-overrides.env
 ```
 
-## Minimal `task.yaml`
+## Minimal Service `task.yaml`
 
-New tasks should include `watch.stateFile` by default so AI agents and
-operators can trigger restart/stop through `STATE`. Omit it only for a
-deliberate one-shot task that must not expose file-based control.
+Use `processes[].cmd` for long-running services such as dev servers, daemons,
+watchers, and local app servers. Do not use top-level `command` for this shape:
+if the runner does not convert the task into a managed process, the run can
+finish immediately with `done (no processes)`.
+
+New service tasks should include `watch.stateFile` by default so AI agents and
+operators can trigger restart/stop through `STATE`.
 
 ```yaml
 version: "1"
-name: example-task
-description: Run the example task
-tags: [example]
+name: dev-server
+description: Run the local dev server
+tags: [dev]
 watch:
-  stateFile: ${PROJECT_ROOT}/.it-runner/states/example-task.STATE
+  stateFile: ${PROJECT_ROOT}/.it-runner/states/dev-server.STATE
+processes:
+  - name: dev-server
+    cmd: |-
+      bash -lc 'cd "${PROJECT_ROOT}/presentation" && exec npm run dev -- --host 0.0.0.0 --port 5174 --strictPort --force'
+```
+
+Use an explicit `cd "${PROJECT_ROOT}/..." && exec ...` in `cmd` unless the
+runner version's task-level workdir semantics have already been verified.
+
+## Minimal One-Shot `task.yaml`
+
+Use the runner's supported one-shot shape only for checks, builds, scripts, and
+other commands that are expected to exit. Omit `watch.stateFile` only when the
+task intentionally should not expose file-based control.
+
+```yaml
+version: "1"
+name: example-check
+description: Run the example check
+tags: [check]
+watch:
+  stateFile: ${PROJECT_ROOT}/.it-runner/states/example-check.STATE
 command:
   - bash
-  - ./scripts/example-task.sh
-workdir: ${PROJECT_ROOT}
+  - -lc
+  - cd "${PROJECT_ROOT}" && ./scripts/example-check.sh
 ```
 
 ## Recommended `stateFile` Control
@@ -67,10 +93,13 @@ entry.
 - task lives at `<task-dir>/task.yaml`
 - `version: "1"` is present
 - name is operator-friendly
-- command is non-interactive unless explicitly intended
-- workdir points at `${PROJECT_ROOT}` when appropriate
+- long-running services use `processes[].cmd`, not top-level `command`
+- one-shot commands are non-interactive unless explicitly intended
+- service commands include an explicit `cd "${PROJECT_ROOT}/..." && exec ...` when task-level workdir behavior has not been proven
 - `watch.stateFile` is present by default unless file-based control is deliberately disabled
 - task is visible in API before deeper debugging
+- after a service start, `it-runner.log` does not say `done (no processes)`
+- service readiness is verified through task state (`running: true`), a passing probe, or an external signal such as a listening port
 
 ## Env Layout Checklist
 

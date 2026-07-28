@@ -78,6 +78,13 @@ Important rule: tasks should normally be discovered as **task directories contai
 - Prefer a small, intentional task surface.
 - Use clear names that reflect operator intent.
 - For families of tasks, prefer selected-target tasks over excessive duplication.
+- Use `processes[].cmd` for long-running services such as dev servers, daemons,
+  watchers, and local app servers.
+- Treat top-level `command` as a one-shot task shape unless the current runner
+  contract for that project explicitly proves otherwise.
+- For service tasks, prefer an explicit
+  `cd "${PROJECT_ROOT}/..." && exec <server command>` inside `processes[].cmd`
+  when task-level workdir behavior has not been proven.
 - For newly authored tasks, include `watch.stateFile` by default so agents and
   operators can restart/stop the task through `STATE`; omit it only for a
   deliberate one-shot task that must not support file-based control.
@@ -137,7 +144,11 @@ When a task is missing or failing, use this sequence:
 3. Inspect `envs-next` to see the next resolved environment.
 4. Trigger the task via API.
 5. Inspect task status and logs.
-6. Only after that decide whether the bug is in task config, env files, or `it-runner` itself.
+6. For service tasks, verify that a managed process was actually created.
+   - `it-runner.log` must not say `done (no processes)`.
+   - Confirm `state.json.running == true`, a passing readiness probe, or an
+     external signal such as the expected listening port.
+7. Only after that decide whether the bug is in task config, env files, or `it-runner` itself.
 
 ## Agent Fix / Restart / Verify Loop
 
@@ -180,6 +191,9 @@ editing code or config. Use the runner as the verification harness:
 - task file exists but is not discovered because it is not in `<task-dir>/task.yaml` form
 - env values missing from `envs-next`
 - `logsDir` or `tasksDir` expands incorrectly due to env expansion timing
+- service task uses top-level `command` and finishes with `done (no processes)`
+- service task relies on task-level `workdir` even though the runner records the
+  project root as the active working directory
 - generated task includes point at missing include files
 - UI caches older task lists and needs project reload
 
